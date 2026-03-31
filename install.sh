@@ -23,9 +23,7 @@ if [[ "$OS_TYPE" == "darwin" ]]; then
     if [[ "$ARCH_TYPE" == "arm64" ]]; then
         ASSET_EXT="macos-arm64"
     else
-        echo "Error: Intel-based macOS (x64) is currently not supported for direct binary installation on the free tier."
-        echo "Please use a Mac with Apple Silicon (M1/M2/M3) or build from source."
-        exit 1
+        ASSET_EXT="macos-x64"
     fi
 elif [[ "$OS_TYPE" == "linux" ]]; then
     ASSET_EXT="linux"
@@ -42,8 +40,8 @@ echo "System detected: $OS_TYPE ($ARCH_TYPE)"
 LATEST_TAG=$(curl -s "https://api.github.com/repos/$GITHUB_USER/$REPO_NAME/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 
 if [ -z "$LATEST_TAG" ]; then
-    echo "Error: Could not fetch latest release. Please ensure the repository is public and contains a release."
-    exit 1
+    echo "Warning: Could not fetch latest release tag. Defaulting to 'v0.1.1'..."
+    LATEST_TAG="v0.1.1"
 fi
 
 DOWNLOAD_URL="https://github.com/$GITHUB_USER/$REPO_NAME/releases/download/$LATEST_TAG/shield-$ASSET_EXT"
@@ -63,6 +61,6 @@ else
 fi
 
 echo "--------------------------------------------------------"
-echo "✅ Success! DevOps Shield is now installed."
+echo " Success! DevOps Shield is now installed."
 echo "Type 'shield' to get started."
 echo "--------------------------------------------------------"

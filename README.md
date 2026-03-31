@@ -21,14 +21,15 @@ Alternatively, you can download the latest binary from the [Releases](https://gi
 
 ---
 
-## Features
+## Core Features
 
-- **Unified Platform Audit**: Run a full repository scan, Kubernetes linting, and Docker image diffing in one command.
-- **Hardcoded Secret Scanner**: Entropy-based leakage detection obeying `.shieldignore` constraints.
-- **Cloud IAM Validator**: Offline structural policy enforcer for AWS JSON and Terraform HCL.
-- **Dependency OSV Scanner**: Security analysis for `requirements.txt` and `package.json` locking systems.
-- **Docker Image Diff**: Deep layer inspection and layer-by-layer security risk scoring.
-- **100% Local**: No external API calls, zero data leakage.
+-   **Dead Config Hunter** — Standardized scanner for orphaned configuration keys within repository files.
+-   **K8s YAML Linter** — Security-focused linter for Kubernetes manifests, checking for privilege escalation and misconfigurations.
+-   **Docker Image Diff** — Deep layer inspection and layer-by-layer security risk scoring for comparing different container versions.
+-   **Hardcoded Secret Scanner** — Entropy-based leakage detection obeying `.shieldignore` whitelisting constraints to find API keys and tokens.
+-   **Cloud IAM Validator** — Offline structural policy enforcer analyzing AWS JSON and Terraform HCL for security breaches (e.g., wildcards, missing MFA).
+-   **Dependency Vulnerability Scanner** — Native analysis for `requirements.txt` and `package.json` locking systems securely against the OSV (Open Source Vulnerability) database locally without external dependencies.
+-   **100% Local & Private** — No external API calls are made for code analysis, ensuring zero data leakage.
 
 ---
 
