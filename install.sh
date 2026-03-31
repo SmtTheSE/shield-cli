@@ -23,7 +23,9 @@ if [[ "$OS_TYPE" == "darwin" ]]; then
     if [[ "$ARCH_TYPE" == "arm64" ]]; then
         ASSET_EXT="macos-arm64"
     else
-        ASSET_EXT="macos-x64"
+        echo "Error: Intel-based macOS (x64) is currently not supported for direct binary installation on the free tier."
+        echo "Please use a Mac with Apple Silicon (M1/M2/M3) or build from source."
+        exit 1
     fi
 elif [[ "$OS_TYPE" == "linux" ]]; then
     ASSET_EXT="linux"
