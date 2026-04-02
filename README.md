@@ -12,10 +12,12 @@ The fastest way to install DevOps Shield is using our automated terminal install
 curl -sSL https://raw.githubusercontent.com/SmtTheSE/shield-cli/main/install.sh | bash
 ```
 
-**Windows (PowerShell):**
+**Windows (PowerShell or CMD):**
+Run this command to download and install automatically:
 ```powershell
-iwr -useb https://raw.githubusercontent.com/SmtTheSE/shield-cli/main/install.ps1 | iex
+powershell -Command "iwr -useb https://raw.githubusercontent.com/SmtTheSE/shield-cli/main/install.ps1 | iex"
 ```
+*Note: If you use regular PowerShell, you can also just use `iwr -useb ... | iex` directly. Using `powershell -Command` ensures it works even if you accidentally paste it into a standard Command Prompt (cmd.exe).*
 
 Alternatively, you can download the latest binary from the [Releases](https://github.com/SmtTheSE/shield-cli/releases) page.
 

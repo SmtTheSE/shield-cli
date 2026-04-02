@@ -19,7 +19,7 @@ $releases = Invoke-RestMethod -Uri "https://api.github.com/repos/$GITHUB_USER/$R
 $tag = $releases.tag_name
 
 if ($tag -eq $null -or $tag -eq "") {
-    $tag = "v1.0.5"
+    $tag = "v1.1.1"
 }
 
 if (-not $tag) {

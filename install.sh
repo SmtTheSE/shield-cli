@@ -41,7 +41,7 @@ LATEST_TAG=$(curl -s "https://api.github.com/repos/$GITHUB_USER/$REPO_NAME/relea
 
 if [ -z "$LATEST_TAG" ]; then
     echo "Warning: Could not fetch latest release tag. Defaulting to 'v1.0.5'..."
-    LATEST_TAG="v1.0.5"
+    LATEST_TAG="v1.1.1"
 fi
 
 DOWNLOAD_URL="https://github.com/$GITHUB_USER/$REPO_NAME/releases/download/$LATEST_TAG/shield-$ASSET_EXT"
