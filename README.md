@@ -29,8 +29,14 @@ Alternatively, you can download the latest binary from the [Releases](https://gi
 -   **K8s YAML Linter** — Security-focused linter for Kubernetes manifests, checking for privilege escalation and misconfigurations.
 -   **Docker Image Diff** — Deep layer inspection and layer-by-layer security risk scoring for comparing different container versions.
 -   **Hardcoded Secret Scanner** — Entropy-based leakage detection obeying `.shieldignore` whitelisting constraints to find API keys and tokens.
--   **Cloud IAM Validator** — Offline structural policy enforcer analyzing AWS JSON and Terraform HCL for security breaches (e.g., wildcards, missing MFA).
--   **Dependency Vulnerability Scanner** — Native analysis for `requirements.txt` and `package.json` locking systems securely against the OSV (Open Source Vulnerability) database locally without external dependencies.
+-   **Cloud IAM Validator** — Offline structural policy enforcer analyzing AWS JSON and Terraform HCL for security breaches.
+-   **Dependency OSV Scanner** — Analyzes `requirements.txt` and `package.json` for known vulnerabilities against the OSV database.
+-   **Git History Forensics** — Deep scan of all git objects (blobs, stash, reflog) for leaked secrets using entropy + regex detection.
+-   **API Contract Linter** — Security-focused linter for OpenAPI 3.x and GraphQL SDL specifications.
+-   **TLS Auditor** — Full certificate chain and cipher suite auditor (A–F grading).
+-   **IAM Escalation Analyzer** — Map privilege escalation paths in AWS/Terraform IAM using graph analysis.
+-   **SBOM Generator** — Generate CycloneDX 1.6 or SPDX 2.3 bill of materials with license risk scoring.
+-   **Container Syscall Policy (Capsule)** — Build minimal seccomp/AppArmor security profiles using static analysis or eBPF tracing.
 -   **100% Local & Private** — No external API calls are made for code analysis, ensuring zero data leakage.
 
 ---
@@ -40,7 +46,7 @@ Alternatively, you can download the latest binary from the [Releases](https://gi
 Once installed, you can run `shield` from any directory:
 
 ```bash
-# 1. Unified repository scan (runs all of the following)
+# 1. Unified repository scan (runs all modules)
 shield scan .
 
 # 2. Dead config hunter
@@ -58,8 +64,23 @@ shield secrets .
 # 6. IAM policy validator
 shield iam terraform/
 
-# 7. Dependency vulnerability scanner
-shield deps .
+# 7. Git history forensics
+shield forensics .
+
+# 8. API contract linter
+shield apilint openapi.yaml
+
+# 9. TLS auditor
+shield tlsaudit example.com
+
+# 10. IAM escalation path mapping
+shield escalation iam_policy.json
+
+# 11. SBOM generation
+shield sbom .
+
+# 12. Container syscall generator
+shield capsule --analyze python:3.11-slim
 ```
 
 For more details, run `shield --help`.
